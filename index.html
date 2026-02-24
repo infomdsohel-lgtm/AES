@@ -84,6 +84,8 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
             z-index: 1000;
             padding: 1rem 0;
+            border: none;
+            margin: 0;
         }
 
         nav {
@@ -93,7 +95,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 2rem;
-            width: 100%;
+            border: none;
         }
 
         .logo {
@@ -118,19 +120,19 @@
             flex-direction: column;
             cursor: pointer;
             z-index: 1001;
-            gap: 5px;
         }
 
         .hamburger span {
-            width: 25px;
+            width: 28px;
             height: 3px;
             background: var(--accent-gold);
+            margin: 4px 0;
             transition: all 0.3s ease;
             border-radius: 2px;
         }
 
         .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(10px, 10px);
+            transform: rotate(45deg) translate(8px, 8px);
         }
 
         .hamburger.active span:nth-child(2) {
@@ -145,6 +147,13 @@
             display: flex;
             list-style: none;
             gap: 2.5rem;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        .nav-links li {
+            list-style: none;
         }
 
         .nav-links a {
@@ -155,6 +164,7 @@
             position: relative;
             font-size: 0.95rem;
             padding: 0.5rem 0;
+            display: block;
         }
 
         .nav-links a::after {
@@ -172,9 +182,75 @@
             width: 100%;
         }
 
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+                flex-direction: column;
+                gap: 0;
+                padding: 0 !important;
+                margin: 0 !important;
+                text-align: center;
+                display: none !important;
+                transition: display 0.3s ease;
+                border: none !important;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex !important;
+            }
+
+            .nav-links li {
+                padding: 1rem 0;
+                border: none;
+                list-style: none;
+                margin: 0;
+            }
+
+            .nav-links li:not(:last-child) {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            }
+
+            .nav-links a {
+                padding: 1rem 0 !important;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .nav-links a:hover {
+                color: var(--accent-gold);
+            }
+
+            nav {
+                padding: 0 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+                gap: 0.5rem;
+            }
+
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
         /* ============ HERO SECTION ============ */
         .hero {
-            margin-top: 70px;
+            margin-top: 67px;
             min-height: calc(100vh - 70px);
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 50%, #1a4d6d 100%);
             display: flex;
@@ -757,10 +833,6 @@
                 font-size: 2rem;
             }
 
-            .nav-links {
-                gap: 1.5rem;
-            }
-
             .about-container,
             .contact-container {
                 grid-template-columns: 1fr;
@@ -784,55 +856,8 @@
                 font-size: 1.2rem;
             }
 
-            nav {
-                padding: 0 1rem;
-                width: 100%;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                flex-direction: column;
-                background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
-                padding: 2rem;
-                gap: 1rem;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            }
-
-            .nav-links.active {
-                max-height: 500px;
-            }
-
-            .nav-links a {
-                padding: 0.8rem 0;
-                font-size: 1rem;
-                border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            }
-
-            .nav-links a::after {
-                bottom: -3px;
-            }
-
-            .logo {
-                font-size: 1.5rem;
-            }
-
-            .logo-icon {
-                width: 40px;
-                height: 40px;
-            }
-
             .hero {
-                margin-top: 120px;
+                margin-top: 68px;
                 min-height: auto;
                 padding: 3rem 1.5rem;
             }
@@ -889,21 +914,17 @@
                 font-size: 1rem;
             }
 
-            nav {
-                padding: 0.8rem;
-            }
-
-            .nav-links {
-                gap: 0.5rem;
+            header {
+                padding: 0.8rem 0;
             }
 
             .logo {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
 
             .logo-icon {
-                width: 35px;
-                height: 35px;
+                width: 30px;
+                height: 30px;
             }
 
             .hero {
@@ -949,6 +970,7 @@
     </style>
 </head>
 <body>
+    <!-- ============ HEADER & NAVIGATION ============ -->
     <header>
         <nav>
             <div class="logo">
@@ -972,6 +994,15 @@
                 </svg>
                 AES Tech
             </div>
+
+            <!-- Hamburger Menu -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navigation Links -->
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#products">Products</a></li>
@@ -979,11 +1010,6 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </nav>
     </header>
 
@@ -1381,18 +1407,18 @@
 
     <!-- ============ JAVASCRIPT ============ -->
     <script>
-        // Hamburger Menu Toggle
+        // Mobile Menu Toggle
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
-        hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
 
         // Close menu when a link is clicked
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', function() {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
             });
