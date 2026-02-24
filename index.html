@@ -93,6 +93,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 2rem;
+            width: 100%;
         }
 
         .logo {
@@ -104,11 +105,40 @@
             display: flex;
             align-items: center;
             gap: 0.8rem;
+            z-index: 1001;
         }
 
         .logo-icon {
             width: 45px;
             height: 45px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--accent-gold);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
 
         .nav-links {
@@ -755,14 +785,41 @@
             }
 
             nav {
-                flex-direction: column;
-                gap: 1rem;
+                padding: 0 1rem;
+                width: 100%;
+            }
+
+            .hamburger {
+                display: flex;
             }
 
             .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
                 flex-direction: column;
-                gap: 0.8rem;
-                text-align: center;
+                background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+                padding: 2rem;
+                gap: 1rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.active {
+                max-height: 500px;
+            }
+
+            .nav-links a {
+                padding: 0.8rem 0;
+                font-size: 1rem;
+                border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            }
+
+            .nav-links a::after {
+                bottom: -3px;
             }
 
             .logo {
@@ -892,7 +949,6 @@
     </style>
 </head>
 <body>
-    <!-- ============ HEADER & NAVIGATION ============ -->
     <header>
         <nav>
             <div class="logo">
@@ -916,13 +972,18 @@
                 </svg>
                 AES Tech
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#products">Products</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
 
@@ -1314,12 +1375,29 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 AES Tech Engineering. All rights reserved. | <a href="#" style="color: rgba(255,255,255,0.5);">Privacy Policy</a> | <a href="#" style="color: rgba(255,255,255,0.5);">Terms of Service</a></p>
+            <p>&copy; 2024 AES Tech Engineering. All rights reserved. | <a href="#" style="color: rgba(255,255,255,0.5);">Privacy Policy</a> | <a href="#" style="color: rgba(255,255,255,0.5);">Terms of Service</a></p>
         </div>
     </footer>
 
     <!-- ============ JAVASCRIPT ============ -->
     <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
         // Form Submission Handler
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
