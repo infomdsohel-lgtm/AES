@@ -1,8 +1,1376 @@
-<html>
-  <head>
-    <meta title="test"></head>
-  </head>
-  <body>
-    <h1>AES Tech</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AES Tech - Precision Hydraulic & Mechanical Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0f172e;
+            --primary-blue: #1a3a52;
+            --secondary-blue: #2d5a7b;
+            --accent-gold: #d4af37;
+            --accent-light-gold: #e8c547;
+            --text-dark: #1f1f1f;
+            --text-light: #ffffff;
+            --bg-light: #f5f5f5;
+            --border-color: #ddd;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Trebuchet MS', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            color: var(--text-light);
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-light-gold), transparent);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        /* ============ NAVIGATION ============ */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            margin-top: 70px;
+            min-height: calc(100vh - 70px);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 50%, #1a4d6d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(45, 90, 123, 0.1) 0%, transparent 50%);
+            animation: backgroundShift 8s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            animation: slideDown 0.8s ease-out 0.2s backwards;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-light-gold);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #c9a227 100%);
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 700;
+            border: 2px solid var(--accent-gold);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            letter-spacing: 1px;
+            font-size: 1rem;
+            margin: 0.5rem;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+            background: linear-gradient(135deg, var(--accent-light-gold) 0%, var(--accent-gold) 100%);
+        }
+
+        .btn:active {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        /* ============ PRODUCTS SECTION ============ */
+        .products {
+            padding: 6rem 2rem;
+            background: var(--bg-light);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: var(--text-light);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid transparent;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-light-gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+            z-index: 10;
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            border-color: var(--accent-gold);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image svg {
+            width: 80%;
+            height: 80%;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image svg {
+            transform: scale(1.1);
+        }
+
+        .product-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2.5rem;
+            background: rgba(212, 175, 55, 0.9);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-content {
+            padding: 2rem;
+        }
+
+        .product-content h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .product-content p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        /* ============ ABOUT SECTION ============ */
+        .about {
+            padding: 6rem 2rem;
+            background: var(--text-light);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image svg {
+            width: 85%;
+            height: 85%;
+        }
+
+        .about-image:hover svg {
+            animation: floatAbout 0.5s ease;
+        }
+
+        @keyframes floatAbout {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .about-content h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .stat {
+            flex: 1;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            font-family: 'Trebuchet MS', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        /* ============ SERVICES SECTION ============ */
+        .services {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+            color: var(--text-light);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .services h2 {
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .services h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .service-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-gold);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-item h3 {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-item p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ============ CONTACT SECTION ============ */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--bg-light);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-box {
+            background: var(--text-light);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-gold);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .info-box h3 {
+            color: var(--primary-dark);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .info-box p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .contact-form {
+            background: var(--text-light);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border-color);
+            background: var(--bg-light);
+            color: var(--text-dark);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background: var(--text-light);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--accent-gold), #c9a227);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .form-group button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-section h4 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-icon:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: translateY(-4px);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            padding-top: 1.5rem;
+        }
+
+        /* ============ RESPONSIVE DESIGN ============ */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0.8rem;
+                text-align: center;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .hero {
+                margin-top: 120px;
+                min-height: auto;
+                padding: 3rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .products-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 200px;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .btn {
+                padding: 0.9rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            .about,
+            .products,
+            .services,
+            .contact {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            h3 {
+                font-size: 1rem;
+            }
+
+            nav {
+                padding: 0.8rem;
+            }
+
+            .nav-links {
+                gap: 0.5rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+
+            .hero {
+                margin-top: 100px;
+                padding: 2rem 1rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.95rem;
+                letter-spacing: 0.5px;
+            }
+
+            .hero-description {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .product-content,
+            .contact-form,
+            .info-box {
+                padding: 1.5rem;
+            }
+
+            .about,
+            .products,
+            .services,
+            .contact {
+                padding: 3rem 1rem;
+            }
+
+            .about-image {
+                height: 250px;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============ HEADER & NAVIGATION ============ -->
+    <header>
+        <nav>
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Gear design -->
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#d4af37" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="#d4af37" stroke-width="1.5"/>
+                    <!-- Gear teeth -->
+                    <g fill="#d4af37">
+                        <rect x="48" y="5" width="4" height="15"/>
+                        <rect x="48" y="80" width="4" height="15"/>
+                        <rect x="5" y="48" width="15" height="4"/>
+                        <rect x="80" y="48" width="15" height="4"/>
+                        <rect x="15" y="15" width="10" height="10" transform="rotate(45 20 20)"/>
+                        <rect x="75" y="75" width="10" height="10" transform="rotate(45 80 80)"/>
+                        <rect x="75" y="15" width="10" height="10" transform="rotate(-45 80 20)"/>
+                        <rect x="15" y="75" width="10" height="10" transform="rotate(-45 20 80)"/>
+                    </g>
+                    <!-- Center circle -->
+                    <circle cx="50" cy="50" r="8" fill="#d4af37"/>
+                </svg>
+                AES Tech
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1>Engineering Excellence</h1>
+            <p class="hero-subtitle">Precision. Reliability. Performance.</p>
+            <p class="hero-description">Leading provider of premium hydraulic components and specialized engineering solutions for automotive and industrial applications.</p>
+            <div>
+                <a href="#contact" class="btn">Get in Touch</a>
+                <a href="#products" class="btn btn-secondary">Explore Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PRODUCTS SECTION ============ -->
+    <section id="products" class="products">
+        <div class="section-title">
+            <h2>Our Premium Products</h2>
+            <p style="color: #666; font-size: 1.1rem;">Engineered for excellence, built to last</p>
+        </div>
+
+        <div class="products-grid">
+            <!-- Product 1: Brake Hoses -->
+            <div class="product-card">
+                <div class="product-image">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Brake system pipes -->
+                        <path d="M 40 80 Q 60 60 80 80 Q 100 100 120 80 L 120 140 Q 100 120 80 140 Q 60 100 40 140 Z" fill="none" stroke="#d4af37" stroke-width="8" stroke-linecap="round"/>
+                        <circle cx="80" cy="80" r="12" fill="#d4af37"/>
+                        <circle cx="120" cy="80" r="12" fill="#d4af37"/>
+                        <!-- Connection points -->
+                        <rect x="70" y="130" width="20" height="30" fill="#e8c547"/>
+                        <rect x="110" y="130" width="20" height="30" fill="#e8c547"/>
+                    </svg>
+                    <div class="product-icon">🚗</div>
+                </div>
+                <div class="product-content">
+                    <h3>Automotive Brake Hoses</h3>
+                    <p>Premium hydraulic brake hoses engineered for maximum safety and reliability. SAE certified with precision manufacturing standards.</p>
+                    <ul class="product-features">
+                        <li>High-pressure rated</li>
+                        <li>Temperature resistant</li>
+                        <li>SAE certified</li>
+                        <li>Durability tested</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Product 2: Steering Hoses -->
+            <div class="product-card">
+                <div class="product-image">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Steering wheel -->
+                        <circle cx="100" cy="80" r="35" fill="none" stroke="#d4af37" stroke-width="6"/>
+                        <line x1="100" y1="45" x2="100" y2="20" stroke="#d4af37" stroke-width="4"/>
+                        <line x1="135" y1="80" x2="160" y2="80" stroke="#d4af37" stroke-width="4"/>
+                        <!-- Steering hose -->
+                        <path d="M 100 115 L 100 160" stroke="#e8c547" stroke-width="10" stroke-linecap="round"/>
+                        <circle cx="100" cy="170" r="8" fill="#d4af37"/>
+                    </svg>
+                    <div class="product-icon">🎯</div>
+                </div>
+                <div class="product-content">
+                    <h3>Steering Hoses</h3>
+                    <p>Advanced hydraulic steering systems designed for precise control and responsive handling. Built with reinforced construction for demanding applications.</p>
+                    <ul class="product-features">
+                        <li>Precision engineered</li>
+                        <li>Responsive control</li>
+                        <li>Reinforced construction</li>
+                        <li>Extended lifespan</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Product 3: Parking Hoses -->
+            <div class="product-card">
+                <div class="product-image">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Parking brake lock -->
+                        <rect x="60" y="50" width="80" height="100" rx="10" fill="none" stroke="#d4af37" stroke-width="6"/>
+                        <circle cx="100" cy="100" r="15" fill="none" stroke="#d4af37" stroke-width="4"/>
+                        <!-- Lock indicator -->
+                        <path d="M 100 85 L 100 115 M 85 100 L 115 100" stroke="#e8c547" stroke-width="4" stroke-linecap="round"/>
+                        <!-- Securing lines -->
+                        <line x1="60" y1="60" x2="40" y2="40" stroke="#d4af37" stroke-width="3"/>
+                        <line x1="140" y1="60" x2="160" y2="40" stroke="#d4af37" stroke-width="3"/>
+                    </svg>
+                    <div class="product-icon">🔐</div>
+                </div>
+                <div class="product-content">
+                    <h3>Parking Brake Hoses</h3>
+                    <p>Reliable parking brake and control systems engineered for secure vehicle retention. Tested under extreme conditions for consistent performance.</p>
+                    <ul class="product-features">
+                        <li>Secure hold</li>
+                        <li>Extreme weather tested</li>
+                        <li>Consistent performance</li>
+                        <li>Long-lasting durability</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Product 4: Mini Hoists -->
+            <div class="product-card">
+                <div class="product-image">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Hoist frame -->
+                        <rect x="50" y="30" width="100" height="120" fill="none" stroke="#d4af37" stroke-width="5"/>
+                        <!-- Lifting hook -->
+                        <path d="M 100 30 Q 95 15 100 5 Q 105 15 100 30" fill="#d4af37"/>
+                        <!-- Pulley system -->
+                        <circle cx="70" cy="50" r="8" fill="none" stroke="#e8c547" stroke-width="3"/>
+                        <circle cx="130" cy="50" r="8" fill="none" stroke="#e8c547" stroke-width="3"/>
+                        <!-- Cable lines -->
+                        <line x1="70" y1="58" x2="70" y2="130" stroke="#e8c547" stroke-width="2"/>
+                        <line x1="130" y1="58" x2="130" y2="130" stroke="#e8c547" stroke-width="2"/>
+                        <!-- Load -->
+                        <rect x="60" y="130" width="80" height="20" rx="3" fill="#d4af37"/>
+                    </svg>
+                    <div class="product-icon">⬆️</div>
+                </div>
+                <div class="product-content">
+                    <h3>Hydraulic Mini Hoists</h3>
+                    <p>Compact yet powerful hydraulic hoisting systems ideal for industrial and automotive applications. Heavy-duty construction with precision lifting capabilities.</p>
+                    <ul class="product-features">
+                        <li>Compact design</li>
+                        <li>Heavy-duty rated</li>
+                        <li>Precision lifting</li>
+                        <li>Industrial certified</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Product 5: Special Purpose Machines -->
+            <div class="product-card">
+                <div class="product-image">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Machine base -->
+                        <rect x="40" y="120" width="120" height="40" rx="5" fill="#e8c547"/>
+                        <!-- Main cylinder -->
+                        <rect x="85" y="50" width="30" height="80" rx="5" fill="none" stroke="#d4af37" stroke-width="5"/>
+                        <!-- Piston rod -->
+                        <line x1="100" y1="50" x2="100" y2="20" stroke="#d4af37" stroke-width="8"/>
+                        <!-- Control elements -->
+                        <circle cx="60" cy="100" r="8" fill="#d4af37"/>
+                        <circle cx="140" cy="100" r="8" fill="#d4af37"/>
+                        <line x1="60" y1="90" x2="60" y2="110" stroke="#d4af37" stroke-width="2"/>
+                        <line x1="140" y1="90" x2="140" y2="110" stroke="#d4af37" stroke-width="2"/>
+                    </svg>
+                    <div class="product-icon">⚙️</div>
+                </div>
+                <div class="product-content">
+                    <h3>Special-Purpose Machines</h3>
+                    <p>Custom engineered hydraulic systems tailored to your specific industrial needs. From design to manufacturing with expert support throughout.</p>
+                    <ul class="product-features">
+                        <li>Custom engineered</li>
+                        <li>Design consultation</li>
+                        <li>Full support</li>
+                        <li>Industrial solutions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Product 6: Engineering Services -->
+            <div class="product-card">
+                <div class="product-image">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Blueprint background -->
+                        <rect x="30" y="30" width="140" height="140" rx="5" fill="none" stroke="#d4af37" stroke-width="2" stroke-dasharray="5,5"/>
+                        <!-- CAD elements -->
+                        <circle cx="80" cy="80" r="20" fill="none" stroke="#e8c547" stroke-width="2"/>
+                        <rect x="110" y="65" width="30" height="30" rx="3" fill="none" stroke="#e8c547" stroke-width="2"/>
+                        <!-- Construction lines -->
+                        <line x1="50" y1="120" x2="150" y2="120" stroke="#d4af37" stroke-width="1.5"/>
+                        <line x1="50" y1="145" x2="150" y2="145" stroke="#d4af37" stroke-width="1.5"/>
+                        <!-- Dimension lines -->
+                        <path d="M 60 160 L 60 170 M 140 160 L 140 170 M 60 165 L 140 165" stroke="#d4af37" stroke-width="1"/>
+                    </svg>
+                    <div class="product-icon">🔧</div>
+                </div>
+                <div class="product-content">
+                    <h3>Engineering Solutions</h3>
+                    <p>Complete engineering support including CAD design, hydraulic analysis, and system optimization. Expert consultation for complex challenges.</p>
+                    <ul class="product-features">
+                        <li>CAD design</li>
+                        <li>Hydraulic analysis</li>
+                        <li>System optimization</li>
+                        <li>Expert consultation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ABOUT SECTION ============ -->
+    <section id="about" class="about">
+        <h2 style="margin-bottom: 3rem;">About AES Tech Engineering</h2>
+        <div class="about-container">
+            <div class="about-image">
+                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Factory building -->
+                    <rect x="50" y="120" width="200" height="130" rx="10" fill="none" stroke="#d4af37" stroke-width="4"/>
+                    <!-- Roof -->
+                    <polygon points="50,120 150,40 250,120" fill="none" stroke="#d4af37" stroke-width="4"/>
+                    <!-- Windows -->
+                    <g fill="none" stroke="#e8c547" stroke-width="2">
+                        <rect x="70" y="140" width="25" height="25"/>
+                        <rect x="110" y="140" width="25" height="25"/>
+                        <rect x="150" y="140" width="25" height="25"/>
+                        <rect x="190" y="140" width="25" height="25"/>
+                        <rect x="70" y="180" width="25" height="25"/>
+                        <rect x="110" y="180" width="25" height="25"/>
+                        <rect x="150" y="180" width="25" height="25"/>
+                        <rect x="190" y="180" width="25" height="25"/>
+                    </g>
+                    <!-- Door -->
+                    <rect x="140" y="210" width="40" height="60" rx="3" fill="none" stroke="#d4af37" stroke-width="2"/>
+                    <circle cx="175" cy="240" r="3" fill="#d4af37"/>
+                    <!-- Chimney -->
+                    <rect x="180" y="50" width="15" height="70" fill="none" stroke="#d4af37" stroke-width="3"/>
+                    <circle cx="187.5" cy="50" r="8" fill="none" stroke="#d4af37" stroke-width="2"/>
+                    <!-- Smoke -->
+                    <circle cx="187.5" cy="35" r="5" fill="#d4af37" opacity="0.6"/>
+                    <circle cx="187.5" cy="25" r="5" fill="#d4af37" opacity="0.4"/>
+                    <!-- Gears (innovation) -->
+                    <g transform="translate(80, 260)">
+                        <circle cx="0" cy="0" r="12" fill="none" stroke="#e8c547" stroke-width="2"/>
+                        <rect x="-2" y="-15" width="4" height="8"/>
+                        <rect x="-2" y="7" width="4" height="8"/>
+                        <rect x="-15" y="-2" width="8" height="4"/>
+                        <rect x="7" y="-2" width="8" height="4"/>
+                    </g>
+                </svg>
+            </div>
+            <div class="about-content">
+                <h2>Leaders in Hydraulic Innovation</h2>
+                <p>Since 2003, AES Tech Engineering has been at the forefront of hydraulic component manufacturing and engineering solutions. Our commitment to excellence drives every product we create.</p>
+                <p>With a team of seasoned engineers and state-of-the-art manufacturing facilities, we deliver precision components that meet the most demanding industrial and automotive standards.</p>
+                <p>We pride ourselves on innovation, quality, and customer partnership. Whether you need standard components or custom-engineered solutions, we're here to exceed your expectations.</p>
+                <p>Our ISO-certified processes and rigorous testing protocols ensure that every product bearing our name meets the highest standards of reliability and performance.</p>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Years Excellence</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Global Clients</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">Quality Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SERVICES SECTION ============ -->
+    <section id="services" class="services">
+        <h2>Our Services & Expertise</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <div class="service-icon">🏭</div>
+                <h3>Manufacturing</h3>
+                <p>State-of-the-art manufacturing with precision machinery and quality control systems for consistent excellence.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">📐</div>
+                <h3>Design & Engineering</h3>
+                <p>Expert CAD design and hydraulic engineering analysis for custom solutions tailored to your needs.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🔬</div>
+                <h3>Testing & Certification</h3>
+                <p>Rigorous testing and industry certifications ensuring reliability and compliance with international standards.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">💼</div>
+                <h3>Technical Support</h3>
+                <p>Dedicated support team providing installation guidance, maintenance tips, and troubleshooting assistance.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🚀</div>
+                <h3>Innovation</h3>
+                <p>Continuous research and development ensuring we stay at the cutting edge of hydraulic technology.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🤝</div>
+                <h3>Partnership</h3>
+                <p>Long-term partnerships with clients, providing strategic solutions for growth and success.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CONTACT SECTION ============ -->
+    <section id="contact" class="contact">
+        <h2>Contact Us Today</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-box">
+                    <h3>📍 Location</h3>
+                    <p>AES Tech Engineering<br>
+                    Industrial Park, Building A<br>
+                    Engineering City, EC 12345<br>
+                    Your Country</p>
+                </div>
+                <div class="info-box">
+                    <h3>📞 Phone & Email</h3>
+                    <p>Phone: +1 (555) 123-4567<br>
+                    Fax: +1 (555) 123-4568<br>
+                    Email: info@aestech.engineering<br>
+                    Support: support@aestech.engineering</p>
+                </div>
+                <div class="info-box">
+                    <h3>⏰ Business Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+                    Saturday: 10:00 AM - 2:00 PM<br>
+                    Sunday: Closed<br>
+                    Holidays: Closed</p>
+                </div>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your project requirements..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>⚙️ AES Tech</h4>
+                <p>Leading manufacturer of premium hydraulic components and engineering solutions for automotive and industrial sectors.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <p>
+                    <a href="#products">Products</a><br>
+                    <a href="#about">About Us</a><br>
+                    <a href="#services">Services</a><br>
+                    <a href="#contact">Contact</a>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Products</h4>
+                <p>
+                    <a href="#products">Brake Hoses</a><br>
+                    <a href="#products">Steering Hoses</a><br>
+                    <a href="#products">Parking Systems</a><br>
+                    <a href="#products">Mini Hoists</a>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <p>Connect with us on social media for updates and industry insights.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon" title="Facebook">f</a>
+                    <a href="#" class="social-icon" title="Twitter">𝕏</a>
+                    <a href="#" class="social-icon" title="LinkedIn">in</a>
+                    <a href="#" class="social-icon" title="YouTube">▶</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AES Tech Engineering. All rights reserved. | <a href="#" style="color: rgba(255,255,255,0.5);">Privacy Policy</a> | <a href="#" style="color: rgba(255,255,255,0.5);">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- ============ JAVASCRIPT ============ -->
+    <script>
+        // Form Submission Handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const button = form.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            
+            // Simulate form submission
+            button.textContent = '✓ Message Sent!';
+            button.style.background = 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)';
+            
+            // Reset form
+            setTimeout(() => {
+                form.reset();
+                button.textContent = originalText;
+                button.style.background = '';
+            }, 2000);
+        });
+
+        // Smooth Scroll Enhancement
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card, .service-item, .info-box').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
 </html>
